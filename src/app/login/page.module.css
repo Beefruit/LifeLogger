@@ -1,0 +1,159 @@
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+
+.header-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.login-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.login-title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.login-description {
+  font-size: 1.6rem;
+  color: #475569;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  width: 44.8rem;
+  height: 56.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-description {
+  font-size: 1.4rem;
+  text-align: center;
+  color: #475569;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.form-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.form-container {
+  position: relative;
+}
+
+.form-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.form-input {
+  width: 40rem;
+  height: 4rem;
+  padding-left: 3.5rem;
+  border: #94a3b8 1px solid;
+  border-radius: 0.5rem;
+}
+
+.eye-icon {
+  color: #94a3b8;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-button {
+  background: linear-gradient(to right, #f43f5e, #8b5cf6);
+  color: #fff;
+  width: 40rem;
+  height: 4rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 3rem;
+}
+
+.form-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.form-line::before,
+.form-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e4e4e7;
+  margin: 0 1rem;
+}
+
+.form-line__text {
+  font-size: 1.4rem;
+  color: #64748b;
+}
+
+.link-button {
+  width: 40rem;
+  height: 4rem;
+  border: #e2e8f0 1px solid;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.link-description {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.footer-text {
+  color: #475569;
+  font-size: 1.4rem;
+}
+
+.signup-link {
+  color: #e11d48;
+  font-weight: 600;
+}
