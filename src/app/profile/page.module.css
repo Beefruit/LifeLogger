@@ -1,0 +1,484 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 8rem auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  width: 80%;
+  background-color: #fff;
+  height: 16.8rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header-name {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+
+.header-introduction {
+  font-size: 1.6rem;
+  color: #475569;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.header-content__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: #475569;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.record-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.record-content,
+.record-content__film,
+.record-content__music,
+.record-content__restaurant {
+  width: 16.6rem;
+  height: 8.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.record-content__film {
+  background-color: #ffe4e6;
+}
+
+.record-content__music {
+  background-color: #ede9fe;
+}
+
+.record-content__restaurant {
+  background-color: #d1fae5;
+}
+
+.record-count,
+.record-count__film,
+.record-count__music,
+.record-count__restaurant {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.record-icon__film,
+.record-icon__music,
+.record-icon__restaurant {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.record-title,
+.record-title__film,
+.record-title__music,
+.record-title__restaurant {
+  font-size: 1.4rem;
+}
+
+.record-count__film,
+.record-icon__film,
+.record-title__film {
+  color: #e11d48;
+}
+
+.record-count__music,
+.record-icon__music,
+.record-title__music {
+  color: #7c3aed;
+}
+
+.record-count__restaurant,
+.record-icon__restaurant,
+.record-title__restaurant {
+  color: #059669;
+}
+
+.profile-export {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.export-header {
+  padding: 0.5rem 1rem;
+}
+
+.export-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.export-description {
+  font-size: 1.4rem;
+}
+
+.export-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pdf-button,
+.csv-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 29.3rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.pdf-button {
+  background-color: #dc2626;
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.csv-button {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.profile-month {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.month-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.month-description {
+  font-size: 1.4rem;
+}
+
+.month-chart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.chart-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.chart-bar {
+  width: 40%;
+  height: 1re;
+  background-color: #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.chart-bar__fill {
+  height: 100%;
+  background: linear-gradient(to right, #fb7185, #a78bfa);
+}
+
+.chart-bar__label {
+  min-width: 2rem;
+  text-align: right;
+  font-size: 1.4rem;
+}
+
+.profile-achievement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-header__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-description {
+  font-size: 1.4rem;
+}
+
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.achievement-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.achievement-detail {
+  font-size: 1.4rem;
+}
+
+.achievement-item__film,
+.achievement-item__music,
+.achievement-item__restaurant {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.achievement-item__film {
+  background: linear-gradient(to right, #fff1f2, #ffe4e6);
+  border-radius: 1rem;
+}
+
+.achievement-film {
+  background-color: #f43f5e;
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.achievement-item__music {
+  background: linear-gradient(to right, #f5f3ff, #ede9fe);
+  border-radius: 1rem;
+}
+
+.achievement-music {
+  background-color: #8b5cf6;
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.achievement-item__restaurant {
+  background: linear-gradient(to right, #ecfdf5, #d1fae5);
+  border-radius: 1rem;
+}
+
+.achievement-restaurant {
+  background-color: #10b981;
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.profile-recent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recently-header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.recently-description {
+  font-size: 1.4rem;
+}
+
+.recently-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.recently-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.recently-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recently-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.recently-date {
+  font-size: 1.4rem;
+  color: #475569;
+}
+
+.recently-film {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffe4e6;
+  color: #e11d48;
+  border-radius: 50%;
+}
+
+.recently-music {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ede9fe;
+  color: #7c3aed;
+  border-radius: 50%;
+}
+
+.recently-restaurant {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d1fae5;
+  color: #059669;
+  border-radius: 50%;
+}
+
+.recently-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recently-star {
+  color: #facc15;
+  fill: currentColor;
+}
+
+.rating-label {
+  font-size: 1.6rem;
+}
+
+.profile-additional {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.additional-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.additional-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.additional-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 29.3rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+}

@@ -4,12 +4,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import "./globals.css";
 import classNames from "classnames/bind";
-import HeaderContainer from "./containers/header/Header.container";
-import { Film } from "lucide-react";
-import { Music } from "lucide-react";
-import { UtensilsCrossed } from "lucide-react";
-import { Star } from "lucide-react";
-import { Calendar } from "lucide-react";
+import HeaderContainer from "@/containers/header/Header.container";
+import { Film, Music, UtensilsCrossed, Star, Calendar } from "lucide-react";
 
 const cx = classNames.bind(styles);
 

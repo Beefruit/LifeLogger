@@ -1,12 +1,12 @@
 import { type FC } from "react";
-import Image from "next/image";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
-import SignupContainer from "@/containers/signup/Signup.container";
+import Image from "next/image";
+import ProfileSettingContainer from "@/containers/profileSetting/ProfileSetting.container";
 
 const cx = classNames.bind(styles);
 
-const SignupPage: FC = () => {
+const ProfileSettingPage: FC = () => {
   return (
     <div>
       <div className={cx("signup-header")}>
@@ -19,9 +19,9 @@ const SignupPage: FC = () => {
           계정을 만들어 특별한 순간들을 기록해보세요.
         </p>
       </div>
-      <SignupContainer />
+      <ProfileSettingContainer />
     </div>
   );
 };
 
-export default SignupPage;
+export default ProfileSettingPage;

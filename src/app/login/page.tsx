@@ -39,7 +39,7 @@ const LoginPage: FC = () => {
               type="text"
               className={cx("form-input")}
               placeholder="your@email.com"
-            ></input>
+            />
           </div>
         </div>
         <div className={cx("form-group")}>
@@ -49,10 +49,10 @@ const LoginPage: FC = () => {
               <Lock size={16} />
             </div>
             <input
-              type="text"
+              type="password"
               className={cx("form-input")}
               placeholder="비밀번호를 입력하세요."
-            ></input>
+            />
             <div className={cx("eye-icon")}>
               <Eye size={16} />
             </div>
