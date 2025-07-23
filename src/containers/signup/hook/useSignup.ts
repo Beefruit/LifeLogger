@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { postSignup } from "../api/signup.api";
+import { useRouter } from "next/navigation";
 
 export const useSignup = () => {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,13 +27,14 @@ export const useSignup = () => {
     e.preventDefault();
 
     try {
-      const response = await postSignup({
+      await postSignup({
         name,
         email,
         password,
       });
 
-      console.log("회원가입 성공:", response);
+      router.push("/login");
+      alert("회원가입이 완료되었습니다.");
     } catch (error) {
       alert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }

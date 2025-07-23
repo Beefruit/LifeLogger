@@ -176,6 +176,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .record-header {
@@ -197,6 +198,7 @@
   border: 1px solid #e2e8f0;
   background-color: #fff;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 .record-list {

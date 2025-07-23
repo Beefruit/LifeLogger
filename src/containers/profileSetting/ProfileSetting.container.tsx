@@ -17,12 +17,11 @@ const ProfileSettingContainer: FC = () => {
         </p>
       </div>
       <div className={cx("form-group")}>
-        <label className={cx("form-label")}>프로필 사진</label>
-        <div className={cx("form-container")}>
+        <div className={cx("form-container", "profile-image-container")}>
           <div className={cx("form-icon")}>
             <Image
-              width={40}
-              height={40}
+              width={100}
+              height={100}
               src="/img/profile-placeholder.jpg"
               alt="프로필 사진"
               className={cx("profile-image")}
@@ -35,6 +34,7 @@ const ProfileSettingContainer: FC = () => {
             placeholder="프로필 사진을 업로드하세요"
           />
         </div>
+        <label className={cx("form-label", "form-profile")}>프로필 사진</label>
       </div>
       <div className={cx("form-group")}>
         <label className={cx("form-label")}>자기 소개</label>

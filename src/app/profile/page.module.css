@@ -12,7 +12,7 @@
   align-items: center;
   padding: 2rem;
   gap: 2rem;
-  width: 80%;
+  width: 60%;
   background-color: #fff;
   height: 16.8rem;
   border-radius: 1rem;
@@ -59,9 +59,23 @@
 }
 
 .profile-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  gap: 3rem;
+  width: 60%;
+}
+
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 2rem;
   padding: 2rem;
 }
@@ -69,7 +83,7 @@
 .record-container {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .record-content,
@@ -236,12 +250,15 @@
 }
 
 .chart-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 1rem;
   width: 40%;
-  height: 1re;
-  background-color: #e2e8f0;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   overflow: hidden;
-  margin-right: 1rem;
+  background-color: #e2e8f0;
 }
 
 .chart-bar__fill {
@@ -250,9 +267,8 @@
 }
 
 .chart-bar__label {
-  min-width: 2rem;
-  text-align: right;
   font-size: 1.4rem;
+  margin-left: auto;
 }
 
 .profile-achievement {
