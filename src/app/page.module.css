@@ -171,7 +171,7 @@
   border-radius: 50%;
 }
 
-.record {
+.log {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,7 +179,7 @@
   margin-bottom: 2rem;
 }
 
-.record-header {
+.log-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -187,12 +187,12 @@
   padding: 4rem;
 }
 
-.record-header__title {
+.log-header__title {
   font-size: 2.4rem;
   font-weight: 700;
 }
 
-.record-button {
+.log-button {
   font-size: 1.4rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
@@ -201,27 +201,27 @@
   cursor: pointer;
 }
 
-.record-list {
+.log-list {
   display: flex;
   gap: 2rem;
   justify-content: center;
   align-items: center;
 }
 
-.record-item {
+.log-item {
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
 }
 
-.record-img {
+.log-img {
   position: relative;
   object-fit: cover;
 }
 
-.record-film-icon,
-.record-music-icon,
-.record-restaurant-icon {
+.log-film-icon,
+.log-music-icon,
+.log-restaurant-icon {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -236,52 +236,52 @@
   font-weight: 700;
 }
 
-.record-film-icon {
+.log-film-icon {
   background-color: #f43f5e;
 }
 
-.record-music-icon {
+.log-music-icon {
   background-color: #8b5cf6;
 }
 
-.record-restaurant-icon {
+.log-restaurant-icon {
   background-color: #10b981;
 }
 
-.record-title {
+.log-title {
   font-size: 1.6rem;
   font-weight: 700;
   padding: 1rem;
 }
 
-.record-description {
+.log-description {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
 }
 
-.record-icon {
+.log-icon {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.record-star {
+.log-star {
   color: #facc15;
   fill: currentColor;
 }
 
-.record-rating {
+.log-rating {
   font-size: 1.4rem;
 }
 
-.record-info {
+.log-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.record-calendar {
+.log-calendar {
   color: #475569;
 }

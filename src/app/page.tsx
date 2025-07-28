@@ -9,9 +9,9 @@ import { Film, Music, UtensilsCrossed, Star, Calendar } from "lucide-react";
 
 const cx = classNames.bind(styles);
 
-export default function Home() {
+const HomePage: FC = () => {
   return (
-    <div>
+    <>
       <HeaderContainer />
       <div className={cx("main")}>
         <div className={cx("header")}>
@@ -105,103 +105,101 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className={cx("record")}>
-          <div className={cx("record-header")}>
-            <h2 className={cx("record-header__title")}>최근 기록</h2>
-            <button type="button" className={cx("record-button")}>
-              <Link href="/record" className={cx("record-link")}>
+        <div className={cx("log")}>
+          <div className={cx("log-header")}>
+            <h2 className={cx("log-header__title")}>최근 기록</h2>
+            <button type="button" className={cx("log-button")}>
+              <Link href="/log" className={cx("log-link")}>
                 전체 보기
               </Link>
             </button>
           </div>
-          <ul className={cx("record-list")}>
-            <li className={cx("record-item")}>
-              <div className={cx("record-container")}>
-                <div className={cx("record-img")}>
+          <ul className={cx("log-list")}>
+            <li className={cx("log-item")}>
+              <div className={cx("log-container")}>
+                <div className={cx("log-img")}>
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
                     width={389.3}
                     height={219}
-                    className={cx("record-image")}
+                    className={cx("log-image")}
                   />
-                  <div className={cx("record-film-icon")}>
+                  <div className={cx("log-film-icon")}>
                     <Film size={12} />
                     <span>영화</span>
                   </div>
                 </div>
-                <div className={cx("record-content")}>
-                  <h3 className={cx("record-title")}>오펜하이머</h3>
-                  <div className={cx("record-description")}>
-                    <div className={cx("record-icon")}>
-                      <Star size={16} className={cx("record-star")} />
-                      <span className={cx("record-rating")}>5/5</span>
+                <div className={cx("log-content")}>
+                  <h3 className={cx("log-title")}>오펜하이머</h3>
+                  <div className={cx("log-description")}>
+                    <div className={cx("log-icon")}>
+                      <Star size={16} className={cx("log-star")} />
+                      <span className={cx("log-rating")}>5/5</span>
                     </div>
-                    <div className={cx("record-info")}>
-                      <Calendar size={16} className={cx("record-calendar")} />
-                      <span className={cx("record-date")}>2024.01.15</span>
+                    <div className={cx("log-info")}>
+                      <Calendar size={16} className={cx("log-calendar")} />
+                      <span className={cx("log-date")}>2024.01.15</span>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <li className={cx("record-item")}>
-              <div className={cx("record-container")}>
-                <div className={cx("record-img")}>
+            <li className={cx("log-item")}>
+              <div className={cx("log-container")}>
+                <div className={cx("log-img")}>
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
                     width={389.3}
                     height={219}
-                    className={cx("record-image")}
+                    className={cx("log-image")}
                   />
-                  <div className={cx("record-music-icon")}>
+                  <div className={cx("log-music-icon")}>
                     <Music size={12} />
                     <span>음악</span>
                   </div>
                 </div>
-                <div className={cx("record-content")}>
-                  <h3 className={cx("record-title")}>
-                    Midnights-테일러 스위프트
-                  </h3>
-                  <div className={cx("record-description")}>
-                    <div className={cx("record-icon")}>
-                      <Star size={16} className={cx("record-star")} />
-                      <span className={cx("record-rating")}>4/5</span>
+                <div className={cx("log-content")}>
+                  <h3 className={cx("log-title")}>Midnights-테일러 스위프트</h3>
+                  <div className={cx("log-description")}>
+                    <div className={cx("log-icon")}>
+                      <Star size={16} className={cx("log-star")} />
+                      <span className={cx("log-rating")}>4/5</span>
                     </div>
-                    <div className={cx("record-info")}>
-                      <Calendar size={16} className={cx("record-calendar")} />
-                      <span className={cx("record-date")}>2024.01.14</span>
+                    <div className={cx("log-info")}>
+                      <Calendar size={16} className={cx("log-calendar")} />
+                      <span className={cx("log-date")}>2024.01.14</span>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <li className={cx("record-item")}>
-              <div className={cx("record-container")}>
-                <div className={cx("record-img")}>
+            <li className={cx("log-item")}>
+              <div className={cx("log-container")}>
+                <div className={cx("log-img")}>
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
                     width={389.3}
                     height={219}
-                    className={cx("record-image")}
+                    className={cx("log-image")}
                   />
-                  <div className={cx("record-restaurant-icon")}>
+                  <div className={cx("log-restaurant-icon")}>
                     <UtensilsCrossed size={12} />
                     <span>식당</span>
                   </div>
                 </div>
-                <div className={cx("record-content")}>
-                  <h3 className={cx("record-title")}>사쿠라 스시</h3>
-                  <div className={cx("record-description")}>
-                    <div className={cx("record-icon")}>
-                      <Star size={16} className={cx("record-star")} />
-                      <span className={cx("record-rating")}>5/5</span>
+                <div className={cx("log-content")}>
+                  <h3 className={cx("log-title")}>사쿠라 스시</h3>
+                  <div className={cx("log-description")}>
+                    <div className={cx("log-icon")}>
+                      <Star size={16} className={cx("log-star")} />
+                      <span className={cx("log-rating")}>5/5</span>
                     </div>
-                    <div className={cx("record-info")}>
-                      <Calendar size={16} className={cx("record-calendar")} />
-                      <span className={cx("record-date")}>2024.01.13</span>
+                    <div className={cx("log-info")}>
+                      <Calendar size={16} className={cx("log-calendar")} />
+                      <span className={cx("log-date")}>2024.01.13</span>
                     </div>
                   </div>
                 </div>
@@ -210,6 +208,8 @@ export default function Home() {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};
+
+export default HomePage;

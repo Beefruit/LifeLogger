@@ -14,15 +14,15 @@ import {
 } from "lucide-react";
 const cx = classNames.bind(styles);
 
-const SearchPage: FC = () => {
+const logPage: FC = () => {
   return (
     <>
       <HeaderContainer />
       <div className={cx("main")}>
-        <div className={cx("search-header")}>
-          <h2 className={cx("header-title")}>기록 검색</h2>
+        <div className={cx("lifelog-header")}>
+          <h2 className={cx("header-title")}>나의 라이프로그</h2>
           <p className={cx("header-description")}>
-            원하는 것을 정확히 찾아보세요.
+            모든 기억에 남는 경험들을 한 곳에서
           </p>
         </div>
         <div className={cx("log-search")}>
@@ -32,54 +32,28 @@ const SearchPage: FC = () => {
               <input
                 type="text"
                 className={cx("search-input")}
-                placeholder="제목, 설명 또는 키워드로 검색하세요."
+                placeholder="기록을 검색하세요."
               />
             </fieldset>
-            <div className={cx("filter-container")}>
-              <div className={cx("filter")}>
-                <label className={cx("filter-label")}>카테고리</label>
-                <div className={cx("filter-select-container")}>
-                  <Funnel size={16} className={cx("filter-icon")} />
-                  <select className={cx("filter-select")}>
-                    <option value="all">모든 카테고리</option>
-                    <option value="type1">영화</option>
-                    <option value="type2">음악</option>
-                    <option value="type3">식당</option>
-                  </select>
-                </div>
-              </div>
-              <div className={cx("filter")}>
-                <label className={cx("filter-label")}>최소 평점</label>
-                <div className={cx("filter-select-container")}>
-                  <Star size={16} className={cx("filter-icon")} />
-                  <select className={cx("filter-select")}>
-                    <option value="all">모든 평점</option>
-                    <option value="date1">5점</option>
-                    <option value="date2">4점 이상</option>
-                    <option value="date3">3점 이상</option>
-                    <option value="date4">2점 이상</option>
-                    <option value="date5">1점 이상</option>
-                  </select>
-                </div>
-              </div>
-              <div className={cx("filter")}>
-                <label className={cx("filter-label")}>기간</label>
-                <div className={cx("filter-select-container")}>
-                  <Calendar size={16} className={cx("filter-icon")} />
-                  <select className={cx("filter-select")}>
-                    <option value="all">전체 기간</option>
-                    <option value="date1">지난 주</option>
-                    <option value="date2">지난 달</option>
-                  </select>
-                </div>
-              </div>
+            <div className={cx("filter-select-container")}>
+              <Funnel size={16} className={cx("filter-icon")} />
+              <select className={cx("search-filter")}>
+                <option value="all">모든 유형</option>
+                <option value="type1">영화</option>
+                <option value="type2">음악</option>
+                <option value="type3">식당</option>
+              </select>
             </div>
+            <select className={cx("search-sorting")}>
+              <option value="all">최신순</option>
+              <option value="date1">평점순</option>
+            </select>
           </form>
         </div>
-        <div className={cx("search-description")}>
-          <p>6개의 기록을 표시하고 있습니다.</p>
+        <div className={cx("lifelog-description")}>
+          <p>6개의 결과를 표시하고 있습니다.</p>
         </div>
-        <div className={cx("search-main")}>
+        <div className={cx("lifelog-main")}>
           <ul className={cx("log-list")}>
             <li className={cx("log-item")}>
               <div className={cx("log-container")}>
@@ -87,7 +61,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -117,7 +91,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -147,7 +121,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -177,7 +151,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -207,7 +181,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -237,7 +211,7 @@ const SearchPage: FC = () => {
                   <Image
                     src={"/img/placeholder.png"}
                     alt="placeholder"
-                    width={700}
+                    width={389.3}
                     height={219}
                     className={cx("log-image")}
                   />
@@ -268,4 +242,4 @@ const SearchPage: FC = () => {
   );
 };
 
-export default SearchPage;
+export default logPage;

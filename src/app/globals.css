@@ -6,7 +6,6 @@
 html,
 body {
   max-width: 100vw;
-  overflow: hidden;
   background: linear-gradient(to bottom right, #fff1f2, #f5f3ff, #f0f9ff);
   font-size: 10px;
 }
@@ -28,6 +27,7 @@ li {
 }
 
 .main {
-  margin-top: 7rem;
   padding: 0 4rem;
+  width: 128rem;
+  margin: 8rem auto 0 auto;
 }
