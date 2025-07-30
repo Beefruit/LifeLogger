@@ -1,5 +1,5 @@
 .additional {
-  margin: 2rem auto;
+  margin: 8rem auto 2rem auto;
   width: 67.2rem;
   padding: 2rem;
 }
@@ -93,21 +93,6 @@
   padding-left: 1rem;
   border: 1px solid #e2e8f0;
   border-radius: 0.5rem;
-  font-size: 1.4rem;
-}
-
-.form-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.rating-icon {
-  color: #facc15;
-  fill: currentColor;
-}
-
-.rating-description {
   font-size: 1.4rem;
 }
 

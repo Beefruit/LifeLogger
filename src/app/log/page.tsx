@@ -2,7 +2,10 @@ import { type FC } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
 import Image from "next/image";
+import Select from "@/component/select/Select.component";
 import HeaderContainer from "@/containers/header/Header.container";
+import { useAdditional } from "@/containers/additional/hook/useAdditional";
+import { CategoryType } from "@/containers/additional/hook/useAdditional";
 import {
   Film,
   Music,
@@ -15,6 +18,8 @@ import {
 const cx = classNames.bind(styles);
 
 const logPage: FC = () => {
+  const { selectedCategory, setSelectedCategory } = useAdditional();
+
   return (
     <>
       <HeaderContainer />
@@ -37,12 +42,20 @@ const logPage: FC = () => {
             </fieldset>
             <div className={cx("filter-select-container")}>
               <Funnel size={16} className={cx("filter-icon")} />
-              <select className={cx("search-filter")}>
-                <option value="all">모든 유형</option>
-                <option value="type1">영화</option>
-                <option value="type2">음악</option>
-                <option value="type3">식당</option>
-              </select>
+              <Select
+                options={[
+                  { value: "all", label: "모든 유형" },
+                  { value: "movie", label: "영화" },
+                  { value: "music", label: "음악" },
+                  { value: "restaurant", label: "식당" },
+                  { value: "book", label: "독서" },
+                ]}
+                value={selectedCategory}
+                onChange={(option) =>
+                  setSelectedCategory(option?.value as CategoryType)
+                }
+                className={cx("search-filter")}
+              />
             </div>
             <select className={cx("search-sorting")}>
               <option value="all">최신순</option>

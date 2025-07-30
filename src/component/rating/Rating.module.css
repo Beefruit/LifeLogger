@@ -1,0 +1,9 @@
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-text {
+  font-size: 1.4rem;
+}
