@@ -7,7 +7,6 @@ import { Film, Star, Share } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useAdditional } from "@/containers/additional/hook/useAdditional";
 import { CategoryType } from "@/containers/additional/hook/useAdditional";
-import RatingComponent from "@/component/rating/Rating.component";
 
 const Select = dynamic(() => import("@/component/select/Select.component"), {
   ssr: false,
@@ -16,8 +15,13 @@ const Select = dynamic(() => import("@/component/select/Select.component"), {
 const cx = classNames.bind(styles);
 
 const AdditionalContainer: FC = () => {
-  const { selectedCategory, setSelectedCategory, categoryConfig } =
-    useAdditional();
+  const {
+    selectedCategory,
+    setSelectedCategory,
+    categoryConfig,
+    rating,
+    OnClickRatingChange,
+  } = useAdditional();
 
   return (
     <div className={cx("additional")}>
@@ -80,7 +84,20 @@ const AdditionalContainer: FC = () => {
           <div className={cx("form-group")}>
             <label className={cx("form-label")}>평점</label>
             <div className={cx("form-rating")}>
-              <RatingComponent defaultValue={3} />
+              <div className={cx("rating-container")}>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    size={24}
+                    fill={star <= rating ? "gold" : "none"}
+                    stroke={star <= rating ? "gold" : "#ccc"}
+                    onClick={() => OnClickRatingChange(star)}
+                    style={{ cursor: "pointer" }}
+                    className={cx("rating-star")}
+                  />
+                ))}
+                <p className={cx("rating-text")}>{rating}/5</p>
+              </div>
             </div>
           </div>
           <div className={cx("form-group")}>
@@ -98,7 +115,15 @@ const AdditionalContainer: FC = () => {
               <h3 className={cx("form-description")}>
                 이미지를 드래그하여 놓거나 클릭하여 선택하세요.
               </h3>
-              <input type="file" accept="image/*" className={cx("form-file")} />
+              <label htmlFor="fileUpload" className={cx("file-upload")}>
+                파일 선택
+              </label>
+              <input
+                type="file"
+                id="fileUpload"
+                accept="image/*"
+                className={cx("form-file")}
+              />
             </div>
           </div>
           <button

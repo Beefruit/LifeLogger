@@ -15,12 +15,14 @@ interface IOption {
 }
 
 interface ISelectComponentProps {
+  width?: string;
+  height?: string;
   value?: CategoryType | string;
   options: IOption[];
   optionBackgroundColor?: string;
   onChange?: (value: IOption | null) => void;
   icon?: React.ReactNode;
-  className?: string;
+  styles?: StylesConfig<IOption, false>;
 }
 
 export const CustomControl = (icon?: React.ReactNode) => {
@@ -55,7 +57,10 @@ const SelectComponent: FC<ISelectComponentProps> = ({
   value,
   optionBackgroundColor,
   onChange,
+  styles,
   icon,
+  width = "100%",
+  height = "4rem",
 }) => {
   const selectedOption = useMemo(
     () => options.find((opt) => opt.value === value) ?? null,
@@ -63,10 +68,14 @@ const SelectComponent: FC<ISelectComponentProps> = ({
   );
 
   const customStyles: StylesConfig<IOption, false> = {
-    control: (provided) => ({
+    control: (provided, state) => ({
       ...provided,
       fontSize: "1.4rem",
       paddingLeft: "2rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      ...(styles?.control?.(provided, state) ?? {}),
     }),
     option: (provided, state) => ({
       ...provided,
@@ -77,26 +86,32 @@ const SelectComponent: FC<ISelectComponentProps> = ({
         ? optionBackgroundColor
         : provided.backgroundColor,
       color: state.isFocused || state.isSelected ? "#fff" : provided.color,
+      ...(styles?.option?.(provided, state) ?? {}),
     }),
-    singleValue: (provided) => ({
+    singleValue: (provided, state) => ({
       ...provided,
+      ...(styles?.singleValue?.(provided, state) ?? {}),
     }),
-    menu: (provided) => ({
+    menu: (provided, state) => ({
       ...provided,
+      ...(styles?.menu?.(provided, state) ?? {}),
     }),
-    menuList: (provided) => ({
+    menuList: (provided, state) => ({
       ...provided,
+      ...(styles?.menuList?.(provided, state) ?? {}),
     }),
   };
 
   return (
-    <Select
-      options={options}
-      value={selectedOption}
-      styles={customStyles}
-      onChange={onChange}
-      components={{ Control: CustomControl(icon) }}
-    />
+    <div style={{ width, height }}>
+      <Select
+        options={options}
+        value={selectedOption}
+        styles={customStyles}
+        onChange={onChange}
+        components={{ Control: CustomControl(icon) }}
+      />
+    </div>
   );
 };
 

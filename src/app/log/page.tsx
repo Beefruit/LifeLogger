@@ -2,24 +2,13 @@ import { type FC } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
 import Image from "next/image";
-import Select from "@/component/select/Select.component";
 import HeaderContainer from "@/containers/header/Header.container";
-import { useAdditional } from "@/containers/additional/hook/useAdditional";
-import { CategoryType } from "@/containers/additional/hook/useAdditional";
-import {
-  Film,
-  Music,
-  UtensilsCrossed,
-  Star,
-  Calendar,
-  Search,
-  Funnel,
-} from "lucide-react";
+import { Film, Music, UtensilsCrossed, Star, Calendar } from "lucide-react";
+import LogSearchBarContainer from "@/containers/logSearchBar/LogSearchBar.container";
+
 const cx = classNames.bind(styles);
 
-const logPage: FC = () => {
-  const { selectedCategory, setSelectedCategory } = useAdditional();
-
+const LogPage: FC = () => {
   return (
     <>
       <HeaderContainer />
@@ -30,39 +19,7 @@ const logPage: FC = () => {
             모든 기억에 남는 경험들을 한 곳에서
           </p>
         </div>
-        <div className={cx("log-search")}>
-          <form className={cx("search-form")}>
-            <fieldset className={cx("search-field")}>
-              <Search size={16} className={cx("search-icon")} />
-              <input
-                type="text"
-                className={cx("search-input")}
-                placeholder="기록을 검색하세요."
-              />
-            </fieldset>
-            <div className={cx("filter-select-container")}>
-              <Funnel size={16} className={cx("filter-icon")} />
-              <Select
-                options={[
-                  { value: "all", label: "모든 유형" },
-                  { value: "movie", label: "영화" },
-                  { value: "music", label: "음악" },
-                  { value: "restaurant", label: "식당" },
-                  { value: "book", label: "독서" },
-                ]}
-                value={selectedCategory}
-                onChange={(option) =>
-                  setSelectedCategory(option?.value as CategoryType)
-                }
-                className={cx("search-filter")}
-              />
-            </div>
-            <select className={cx("search-sorting")}>
-              <option value="all">최신순</option>
-              <option value="date1">평점순</option>
-            </select>
-          </form>
-        </div>
+        <LogSearchBarContainer />
         <div className={cx("lifelog-description")}>
           <p>6개의 결과를 표시하고 있습니다.</p>
         </div>
@@ -255,4 +212,4 @@ const logPage: FC = () => {
   );
 };
 
-export default logPage;
+export default LogPage;

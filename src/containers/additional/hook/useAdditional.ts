@@ -3,7 +3,6 @@
 import { ReactElement, useState } from "react";
 import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 import { createElement } from "react";
-import classNames from "classnames/bind";
 
 export type CategoryType = "movie" | "music" | "restaurant" | "book";
 
@@ -19,6 +18,12 @@ interface CategoryConfig {
 export const useAdditional = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryType>("movie");
+
+  const [rating, setRating] = useState(3);
+
+  const OnClickRatingChange = (star: number) => {
+    setRating(star);
+  };
 
   const categoryConfig: Record<CategoryType, CategoryConfig> = {
     movie: {
@@ -53,9 +58,15 @@ export const useAdditional = () => {
       label: "책 제목",
       icon: (className, size = 16) =>
         createElement(BookOpen, { size, className }),
-      color: "#F40C1EF",
+      color: "#1190F2",
     },
   };
 
-  return { selectedCategory, setSelectedCategory, categoryConfig };
+  return {
+    selectedCategory,
+    setSelectedCategory,
+    categoryConfig,
+    rating,
+    OnClickRatingChange,
+  };
 };

@@ -128,13 +128,20 @@
   font-weight: 400;
 }
 
-.form-file {
+.file-upload {
   border: 1px solid #e2e8f0;
   border-radius: 0.5rem;
   font-size: 1.4rem;
   background-color: #fff;
   width: 8rem;
   height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-file {
+  display: none;
 }
 
 .form-button {
@@ -147,6 +154,16 @@
   font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-text {
+  font-size: 1.4rem;
 }
 
 @media (max-width: 768px) {
