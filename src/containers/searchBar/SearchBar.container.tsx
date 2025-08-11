@@ -43,9 +43,6 @@ const SearchBarContainer: FC = () => {
                   control: (provided) => ({
                     ...provided,
                     borderColor: "#E2E8F0",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                   }),
                   option: (provided, state) => ({
                     ...provided,
@@ -56,6 +53,10 @@ const SearchBarContainer: FC = () => {
                       : state.isFocused
                       ? "#E2E8F0"
                       : provided.backgroundColor,
+                  }),
+                  singleValue: (provided) => ({
+                    ...provided,
+                    textAlign: "center",
                   }),
                 }}
               />
@@ -91,6 +92,10 @@ const SearchBarContainer: FC = () => {
                       ? "#E2E8F0"
                       : provided.backgroundColor,
                   }),
+                  singleValue: (provided) => ({
+                    ...provided,
+                    textAlign: "center",
+                  }),
                 }}
               />
             </div>
@@ -122,6 +127,10 @@ const SearchBarContainer: FC = () => {
                       : state.isFocused
                       ? "#E2E8F0"
                       : provided.backgroundColor,
+                  }),
+                  singleValue: (provided) => ({
+                    ...provided,
+                    textAlign: "center",
                   }),
                 }}
               />

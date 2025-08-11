@@ -72,9 +72,6 @@ const SelectComponent: FC<ISelectComponentProps> = ({
       ...provided,
       fontSize: "1.4rem",
       paddingLeft: "2rem",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
       ...(styles?.control?.(provided, state) ?? {}),
     }),
     option: (provided, state) => ({
