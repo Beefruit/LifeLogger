@@ -27,9 +27,24 @@
 .nav-list {
   display: flex;
   gap: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .nav-item {
   font-size: 1.4rem;
   font-weight: 500;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(to right, #fb7185, #a78bfa);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: #fff;
+}
+.nav-item img {
+  border-radius: 50%;
 }

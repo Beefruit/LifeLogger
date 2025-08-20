@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { postProfileSetting } from "../api/profileSetting.api";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface IUseProfileSettingReturn {
   LIMIT_INTRODUCTION_LENGTH: number;
@@ -19,6 +20,8 @@ export const useProfileSetting = (): IUseProfileSettingReturn => {
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [introduction, setIntroduction] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const onChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -59,7 +62,9 @@ export const useProfileSetting = (): IUseProfileSettingReturn => {
         introduction,
       });
 
-      alert("프로필 설정이 완료되었습니다.");
+      const nextUrl = searchParams.get("next") || "/";
+
+      router.replace(nextUrl);
     } catch (error) {
       alert("프로필 설정에 실패했습니다. 다시 시도해주세요.");
       console.error("프로필 설정 오류:", error);

@@ -4,17 +4,16 @@ export const postProfileSetting = async (data: {
   profileImage: File | null;
   introduction: string;
 }) => {
-  const { profileImage, introduction } = data;
+  const formData = new FormData();
+
+  if (data.profileImage) {
+    formData.append("profileImage", data.profileImage);
+  }
+  formData.append("introduction", data.introduction);
 
   const response = await fetch("/api/profile-setting", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      profileImage: profileImage ? URL.createObjectURL(profileImage) : null,
-      introduction,
-    }),
+    body: formData, // Content-Type 자동 설정됨
   });
 
   if (!response.ok) {

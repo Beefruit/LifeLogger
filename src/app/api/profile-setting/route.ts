@@ -3,7 +3,10 @@ import { createClient } from "@/utils/supabase/server";
 
 export const POST = async (request: NextRequest) => {
   const supabase = await createClient();
-  const { profileImage, introduction } = await request.json();
+  const formData = await request.formData();
+
+  const file = formData.get("profileImage") as File | null;
+  const introduction = formData.get("introduction") as string;
 
   // 1. 사용자 정보 가져오기
   const {
@@ -12,23 +15,28 @@ export const POST = async (request: NextRequest) => {
   } = await supabase.auth.getUser();
 
   if (userError || !user) {
-    console.error("사용자 정보 가져오기 오류:", userError);
-    return;
+    return NextResponse.json(
+      { error: "사용자 정보를 가져올 수 없습니다." },
+      { status: 401 }
+    );
   }
 
   let profileImageUrl: string | null = null;
 
   // 2. 프로필 이미지 업로드
-  if (profileImage) {
-    const profileExt = profileImage.split(".").pop();
+  if (file) {
+    const profileExt = file.name.split(".").pop();
     const filePath = `${user.id}.${profileExt}`;
 
     const { error: uploadError } = await supabase.storage
       .from("profile-images")
-      .upload(filePath, profileImage);
+      .upload(filePath, file, { upsert: true }); // 기존 파일 덮어쓰기 가능
+
     if (uploadError) {
-      console.error("프로필 이미지 업로드 실패:", uploadError);
-      return;
+      return NextResponse.json(
+        { error: "이미지 업로드 실패" },
+        { status: 500 }
+      );
     }
 
     const { data } = supabase.storage
@@ -38,19 +46,16 @@ export const POST = async (request: NextRequest) => {
     profileImageUrl = data.publicUrl;
   }
 
-  // 3. user_profiles 테이블에 upsert
+  // 3. DB 저장
   const { error: dbError } = await supabase.from("profiles").upsert({
     id: user.id,
-    email: user.email,
-    introduction,
-    profile_image: profileImageUrl,
+    bio: introduction,
+    avatar_url: profileImageUrl,
   });
 
   if (dbError) {
-    console.error("DB 저장 실패:", dbError);
-    return;
+    return NextResponse.json({ error: "DB 저장 실패" }, { status: 500 });
   }
 
-  // // 4. 성공 후 이동
-  window.location.href = "/";
+  return NextResponse.json({ message: "프로필 설정이 완료되었습니다." });
 };
