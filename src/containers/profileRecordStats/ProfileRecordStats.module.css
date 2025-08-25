@@ -1,0 +1,74 @@
+.log-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.log-content,
+.log-content__film,
+.log-content__music,
+.log-content__restaurant {
+  width: 16.6rem;
+  height: 8.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.log-content__film {
+  background-color: #ffe4e6;
+}
+
+.log-content__music {
+  background-color: #ede9fe;
+}
+
+.log-content__restaurant {
+  background-color: #d1fae5;
+}
+
+.log-count,
+.log-count__film,
+.log-count__music,
+.log-count__restaurant {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.log-icon__film,
+.log-icon__music,
+.log-icon__restaurant {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-title,
+.log-title__film,
+.log-title__music,
+.log-title__restaurant {
+  font-size: 1.4rem;
+}
+
+.log-count__film,
+.log-icon__film,
+.log-title__film {
+  color: #e11d48;
+}
+
+.log-count__music,
+.log-icon__music,
+.log-title__music {
+  color: #7c3aed;
+}
+
+.log-count__restaurant,
+.log-icon__restaurant,
+.log-title__restaurant {
+  color: #059669;
+}

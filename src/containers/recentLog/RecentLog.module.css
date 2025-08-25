@@ -1,0 +1,111 @@
+.log {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.log-header__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.log-button {
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  background-color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.log-list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.log-item {
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.log-img {
+  position: relative;
+  object-fit: cover;
+}
+
+.log-film-icon,
+.log-music-icon,
+.log-restaurant-icon {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.log-film-icon {
+  background-color: #f43f5e;
+}
+
+.log-music-icon {
+  background-color: #8b5cf6;
+}
+
+.log-restaurant-icon {
+  background-color: #10b981;
+}
+
+.log-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.log-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.log-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-star {
+  color: #facc15;
+  fill: currentColor;
+}
+
+.log-rating {
+  font-size: 1.4rem;
+}
+
+.log-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-calendar {
+  color: #475569;
+}

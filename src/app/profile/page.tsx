@@ -1,84 +1,43 @@
 import { type FC } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
-import Image from "next/image";
 import HeaderContainer from "@/containers/header/Header.container";
+import ProfileContainer from "@/containers/profile/Profile.container";
+import ProfileRecordStatsContainer from "@/containers/profileRecordStats/ProfileRecordStats.container";
+import { type TCategory } from "@/types";
 import {
   Film,
   Music,
   UtensilsCrossed,
-  Calendar,
-  TrendingUp,
   Star,
   FileText,
   Download,
 } from "lucide-react";
 
 const cx = classNames.bind(styles);
-const ProfilePage: FC = () => {
+
+const ProfilePage: FC = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/records`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch records");
+  }
+  const records = await response.json();
   return (
     <>
       <HeaderContainer />
       <div className={cx("main")}>
-        <div className={cx("profile-header")}>
-          <div className={cx("header-icon")}>
-            <Image
-              src={"/img/placeholder.png"}
-              alt="placeholder"
-              width={96}
-              height={96}
-            />
-          </div>
-          <div className={cx("header-container")}>
-            <h2 className={cx("header-name")}>김철수</h2>
-            <p className={cx("header-introduction")}>
-              영화, 음악, 그리고 훌륭한 음식 경험에 열정적인 사람
-            </p>
-            <div className={cx("header-content")}>
-              <div className={cx("header-content__item")}>
-                <Calendar size={16} />
-                <span>2023년 6월 가입</span>
-              </div>
-              <div className={cx("header-content__item")}>
-                <TrendingUp size={16} />
-                <span>12일 연속 기록</span>
-              </div>
-              <div className={cx("header-content__item")}>
-                <Star size={16} />
-                <span>평균 4.5</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProfileContainer />
         <div className={cx("profile-container")}>
           <div className={cx("profile-main")}>
-            <div className={cx("log-container")}>
-              <div className={cx("log-content")}>
-                <h3 className={cx("log-count")}>101</h3>
-                <p className={cx("log-title")}>전체 기록</p>
-              </div>
-              <div className={cx("log-content__film")}>
-                <h3 className={cx("log-count__film")}>47</h3>
-                <div className={cx("log-icon__film")}>
-                  <Film size={12} />
-                  <p className={cx("log-title__film")}>영화</p>
-                </div>
-              </div>
-              <div className={cx("log-content__music")}>
-                <h3 className={cx("log-count__music")}>23</h3>
-                <div className={cx("log-icon__music")}>
-                  <Music size={12} />
-                  <p className={cx("log-title__music")}>음악</p>
-                </div>
-              </div>
-              <div className={cx("log-content__restaurant")}>
-                <h3 className={cx("log-count__restaurant")}>31</h3>
-                <div className={cx("log-icon__restaurant")}>
-                  <UtensilsCrossed size={12} />
-                  <p className={cx("log-title__restaurant")}>식당</p>
-                </div>
-              </div>
-            </div>
+            <ProfileRecordStatsContainer records={records} />
             <div className={cx("profile-month")}>
               <div className={cx("month-header")}>
                 <h2 className={cx("month-title")}>월별 활동</h2>

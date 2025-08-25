@@ -7,8 +7,7 @@ export const GET = async () => {
   const { data: records, error } = await supabase
     .from("records")
     .select("*")
-    .order("created_at", { ascending: false })
-    .single();
+    .order("created_at", { ascending: false });
 
   if (error) {
     return NextResponse.json(

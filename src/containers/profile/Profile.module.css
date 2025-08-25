@@ -1,0 +1,50 @@
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #fff;
+  height: 16.8rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header-name {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+
+.header-introduction {
+  font-size: 1.6rem;
+  color: #475569;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.header-content__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: #475569;
+}
