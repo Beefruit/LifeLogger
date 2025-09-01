@@ -4,7 +4,9 @@ import classNames from "classnames/bind";
 import HeaderContainer from "@/containers/header/Header.container";
 import ProfileContainer from "@/containers/profile/Profile.container";
 import ProfileRecordStatsContainer from "@/containers/profileRecordStats/ProfileRecordStats.container";
+import ProfileMonthlyContainer from "@/containers/profileMonthly/ProfileMonthly.container";
 import { type TCategory } from "@/types";
+import { createClient } from "@/utils/supabase/server";
 import {
   Film,
   Music,
@@ -17,19 +19,18 @@ import {
 const cx = classNames.bind(styles);
 
 const ProfilePage: FC = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/records`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch records");
-  }
-  const records = await response.json();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error("Unauthorized");
+
+  const { data: records } = await supabase
+    .from("records")
+    .select("*")
+    .eq("user_id", user.id);
+
   return (
     <>
       <HeaderContainer />
@@ -37,63 +38,8 @@ const ProfilePage: FC = async () => {
         <ProfileContainer />
         <div className={cx("profile-container")}>
           <div className={cx("profile-main")}>
-            <ProfileRecordStatsContainer records={records} />
-            <div className={cx("profile-month")}>
-              <div className={cx("month-header")}>
-                <h2 className={cx("month-title")}>월별 활동</h2>
-                <p className={cx("month-description")}>
-                  지난 몇 달간의 기록 활동
-                </p>
-              </div>
-              <div className={cx("month-chart")}>
-                <p className={cx("chart-title")}>1월</p>
-                <div className={cx("chart-bar-wrapper")}>
-                  <div className={cx("chart-bar")}>
-                    <div
-                      className={cx("chart-bar__fill")}
-                      style={{ width: `${40}%` }}
-                    ></div>
-                  </div>
-                  <span className={cx("chart-bar__label")}>8</span>
-                </div>
-              </div>
-              <div className={cx("month-chart")}>
-                <p className={cx("chart-title")}>12월</p>
-                <div className={cx("chart-bar-wrapper")}>
-                  <div className={cx("chart-bar")}>
-                    <div
-                      className={cx("chart-bar__fill")}
-                      style={{ width: `${80}%` }}
-                    ></div>
-                  </div>
-                  <span className={cx("chart-bar__label")}>12</span>
-                </div>
-              </div>
-              <div className={cx("month-chart")}>
-                <p className={cx("chart-title")}>11월</p>
-                <div className={cx("chart-bar-wrapper")}>
-                  <div className={cx("chart-bar")}>
-                    <div
-                      className={cx("chart-bar__fill")}
-                      style={{ width: `${100}%` }}
-                    ></div>
-                  </div>
-                  <span className={cx("chart-bar__label")}>15</span>
-                </div>
-              </div>
-              <div className={cx("month-chart")}>
-                <p className={cx("chart-title")}>10월</p>
-                <div className={cx("chart-bar-wrapper")}>
-                  <div className={cx("chart-bar")}>
-                    <div
-                      className={cx("chart-bar__fill")}
-                      style={{ width: `${60}%` }}
-                    ></div>
-                  </div>
-                  <span className={cx("chart-bar__label")}>10</span>
-                </div>
-              </div>
-            </div>
+            <ProfileRecordStatsContainer records={records ?? []} />
+            <ProfileMonthlyContainer records={records ?? []} />
             <div className={cx("profile-recent")}>
               <div className={cx("recently-header")}>
                 <h2 className={cx("recently-header__title")}>최근 활동</h2>

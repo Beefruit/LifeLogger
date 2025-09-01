@@ -28,6 +28,8 @@ const HomePage: FC = async () => {
 
   const records = await response.json();
 
+  console.log("HomePage - records:", records);
+
   return (
     <>
       <HeaderContainer />
