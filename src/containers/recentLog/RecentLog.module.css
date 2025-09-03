@@ -27,7 +27,8 @@
 }
 
 .log-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   align-items: center;
 }
@@ -108,4 +109,16 @@
 
 .log-calendar {
   color: #475569;
+}
+
+@media (max-width: 768px) {
+  .log-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .log-list {
+    grid-template-columns: 1fr;
+  }
 }

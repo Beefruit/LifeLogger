@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import "./globals.css";
 import classNames from "classnames/bind";
 import HeaderContainer from "@/containers/header/Header.container";
-import { Film, Music, UtensilsCrossed, Star, Calendar } from "lucide-react";
+import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 import RecordStatsContainer from "@/containers/recordStats/RecordStats.container";
 import RecentLogContainer from "@/containers/recentLog/RecentLog.container";
 
@@ -80,6 +80,19 @@ const HomePage: FC = async () => {
                 <h2 className={cx("additional-title")}>식당 기록하기</h2>
                 <p className={cx("additional-description")}>
                   맛있는 식사 경험을 기억해보세요.
+                </p>
+              </div>
+            </Link>
+          </div>
+          <div className={cx("additional-content")}>
+            <Link href="/add-book">
+              <div className={cx("book-content")}>
+                <div className={cx("book-icon")}>
+                  <BookOpen size={24} />
+                </div>
+                <h2 className={cx("additional-title")}>책 기록하기</h2>
+                <p className={cx("additional-description")}>
+                  감명 깊게 읽은 책을 기록해보세요.
                 </p>
               </div>
             </Link>

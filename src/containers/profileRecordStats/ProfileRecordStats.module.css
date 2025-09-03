@@ -6,8 +6,9 @@
 .log-content,
 .log-content__film,
 .log-content__music,
-.log-content__restaurant {
-  width: 16.6rem;
+.log-content__restaurant,
+.log-content__book {
+  flex: 1;
   height: 8.8rem;
   display: flex;
   flex-direction: column;
@@ -32,17 +33,23 @@
   background-color: #d1fae5;
 }
 
+.log-content__book {
+  background-color: #eef2ff;
+}
+
 .log-count,
 .log-count__film,
 .log-count__music,
-.log-count__restaurant {
+.log-count__restaurant,
+.log-count__book {
   font-size: 2.4rem;
   font-weight: 700;
 }
 
 .log-icon__film,
 .log-icon__music,
-.log-icon__restaurant {
+.log-icon__restaurant,
+.log-icon__book {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -51,7 +58,8 @@
 .log-title,
 .log-title__film,
 .log-title__music,
-.log-title__restaurant {
+.log-title__restaurant,
+.log-title__book {
   font-size: 1.4rem;
 }
 
@@ -71,4 +79,10 @@
 .log-icon__restaurant,
 .log-title__restaurant {
   color: #059669;
+}
+
+.log-count__book,
+.log-icon__book,
+.log-title__book {
+  color: #1190f2;
 }

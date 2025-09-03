@@ -30,9 +30,14 @@
   align-items: center;
 }
 
+.additional-content {
+  flex: 1;
+}
+
 .film-content,
 .music-content,
-.restaurant-content {
+.restaurant-content,
+.book-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +45,7 @@
   gap: 1rem;
   padding: 2rem;
   background-color: #fff;
-  width: 39rem;
+
   height: 16.8rem;
   border-radius: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -56,6 +61,10 @@
 
 .restaurant-content {
   background: linear-gradient(to bottom right, #d1fae5, #a7f3d0);
+}
+
+.book-content {
+  background: linear-gradient(to bottom right, #d2dcff, #b3c5fe);
 }
 
 .additonal-title {
@@ -132,4 +141,23 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+}
+
+.book-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #1190f2;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .additional-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }

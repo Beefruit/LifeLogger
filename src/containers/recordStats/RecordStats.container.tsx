@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import styles from "./RecordStats.module.css";
 import classNames from "classnames/bind";
-import { Film, Music, UtensilsCrossed } from "lucide-react";
+import { BookOpen, Film, Music, UtensilsCrossed } from "lucide-react";
 import { type TCategory } from "@/types";
 import { countRecordsByCategory } from "@/domain";
 
@@ -48,6 +48,17 @@ const RecordStatsContainer: FC<RecordStatsContainerProps> = ({ records }) => {
           </div>
           <div className={cx("restaurant-icon__btn")}>
             <UtensilsCrossed size={24} />
+          </div>
+        </div>
+      </div>
+      <div className={cx("record-stats-content")}>
+        <div className={cx("record-stats-button")}>
+          <div className={cx("record-stats-description")}>
+            <p className={cx("record-stats-title")}>읽은 책</p>
+            <h2 className={cx("number")}>{recordsCounts.book}</h2>
+          </div>
+          <div className={cx("book-icon__btn")}>
+            <BookOpen size={24} />
           </div>
         </div>
       </div>

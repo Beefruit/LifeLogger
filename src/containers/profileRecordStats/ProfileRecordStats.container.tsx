@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import styles from "./ProfileRecordStats.module.css";
 import classNames from "classnames/bind";
-import { Film, Music, UtensilsCrossed } from "lucide-react";
+import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 import { type TCategory } from "@/types";
 import { countRecordsByCategory } from "@/domain";
 
@@ -45,6 +45,13 @@ const ProfileRecordStatsContainer: FC<IProfileRecordStatsContainerProps> = ({
         <div className={cx("log-icon__restaurant")}>
           <UtensilsCrossed size={12} />
           <p className={cx("log-title__restaurant")}>식당</p>
+        </div>
+      </div>
+      <div className={cx("log-content__book")}>
+        <h3 className={cx("log-count__book")}>{recordCounts.book}</h3>
+        <div className={cx("log-icon__book")}>
+          <BookOpen size={12} />
+          <p className={cx("log-title__book")}>책</p>
         </div>
       </div>
     </div>

@@ -5,12 +5,14 @@ import HeaderContainer from "@/containers/header/Header.container";
 import ProfileContainer from "@/containers/profile/Profile.container";
 import ProfileRecordStatsContainer from "@/containers/profileRecordStats/ProfileRecordStats.container";
 import ProfileMonthlyContainer from "@/containers/profileMonthly/ProfileMonthly.container";
+import ProfileRecentContainer from "@/containers/profileRecent/ProfileRecent.container";
 import { type TCategory } from "@/types";
 import { createClient } from "@/utils/supabase/server";
 import {
   Film,
   Music,
   UtensilsCrossed,
+  BookOpen,
   Star,
   FileText,
   Download,
@@ -19,6 +21,8 @@ import {
 const cx = classNames.bind(styles);
 
 const ProfilePage: FC = async () => {
+  const SHOW_RECENT_NUMBER = 3;
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -40,62 +44,13 @@ const ProfilePage: FC = async () => {
           <div className={cx("profile-main")}>
             <ProfileRecordStatsContainer records={records ?? []} />
             <ProfileMonthlyContainer records={records ?? []} />
-            <div className={cx("profile-recent")}>
-              <div className={cx("recently-header")}>
-                <h2 className={cx("recently-header__title")}>최근 활동</h2>
-                <p className={cx("recently-description")}>최근 기록과 경험들</p>
-              </div>
-              <div className={cx("recently-container")}>
-                <div className={cx("recently-content")}>
-                  <div className={cx("recently-item")}>
-                    <div className={cx("recently-film")}>
-                      <Film size={16} />
-                    </div>
-                    <div className={cx("recently-info")}>
-                      <h3 className={cx("recently-title")}>오펜하이머</h3>
-                      <p className={cx("recently-date")}>2024.01.15</p>
-                    </div>
-                  </div>
-                  <div className={cx("recently-rating")}>
-                    <Star size={12} className={cx("recently-star")} />
-                    <span className={cx("rating-label")}>5</span>
-                  </div>
-                </div>
-                <div className={cx("recently-content")}>
-                  <div className={cx("recently-item")}>
-                    <div className={cx("recently-music")}>
-                      <Music size={16} />
-                    </div>
-                    <div className={cx("recently-info")}>
-                      <h3 className={cx("recently-title")}>Midnights</h3>
-                      <p className={cx("recently-date")}>2024.01.14</p>
-                    </div>
-                  </div>
-                  <div className={cx("recently-rating")}>
-                    <Star size={12} className={cx("recently-star")} />
-                    <span className={cx("rating-label")}>4</span>
-                  </div>
-                </div>
-                <div className={cx("recently-content")}>
-                  <div className={cx("recently-item")}>
-                    <div className={cx("recently-restaurant")}>
-                      <UtensilsCrossed size={16} />
-                    </div>
-                    <div className={cx("recently-info")}>
-                      <h3 className={cx("recently-title")}>사쿠라 스시</h3>
-                      <p className={cx("recently-date")}>2024.01.13</p>
-                    </div>
-                  </div>
-                  <div className={cx("recently-rating")}>
-                    <Star size={12} className={cx("recently-star")} />
-                    <span className={cx("rating-label")}>5</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProfileRecentContainer
+              records={records ?? []}
+              showNumber={SHOW_RECENT_NUMBER}
+            />
           </div>
           <div className={cx("side-bar")}>
-            <div className={cx("profile-export")}>
+            {/* <div className={cx("profile-export")}>
               <div className={cx("export-header")}>
                 <h2 className={cx("export-title")}>데이터 내보내기</h2>
                 <p className={cx("export-description")}>
@@ -116,8 +71,8 @@ const ProfilePage: FC = async () => {
                   </button>
                 </div>
               </div>
-            </div>
-            <div className={cx("profile-achievement")}>
+            </div> */}
+            {/* <div className={cx("profile-achievement")}>
               <div className={cx("achievement-header")}>
                 <h2 className={cx("achievement-header__title")}>업적</h2>
                 <p className={cx("achievement-description")}>기록 달성 현황</p>
@@ -151,7 +106,7 @@ const ProfilePage: FC = async () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className={cx("profile-additional")}>
               <div className={cx("additional-header")}>
                 <h2 className={cx("additional-title")}>빠른 작업</h2>
@@ -168,6 +123,10 @@ const ProfilePage: FC = async () => {
                 <button type="button" className={cx("additional-button")}>
                   <UtensilsCrossed size={16} />
                   <span>식당 기록하기</span>
+                </button>
+                <button type="button" className={cx("additional-button")}>
+                  <BookOpen size={16} />
+                  <span>책 기록하기</span>
                 </button>
               </div>
             </div>

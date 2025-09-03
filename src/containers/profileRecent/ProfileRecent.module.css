@@ -1,0 +1,96 @@
+.profile-recent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recently-header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.recently-description {
+  font-size: 1.4rem;
+}
+
+.recently-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.recently-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.recently-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recently-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.recently-date {
+  font-size: 1.4rem;
+  color: #475569;
+}
+
+.recently-film {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffe4e6;
+  color: #e11d48;
+  border-radius: 50%;
+}
+
+.recently-music {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ede9fe;
+  color: #7c3aed;
+  border-radius: 50%;
+}
+
+.recently-restaurant {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d1fae5;
+  color: #059669;
+  border-radius: 50%;
+}
+
+.recently-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recently-star {
+  color: #facc15;
+  fill: currentColor;
+}
+
+.rating-label {
+  font-size: 1.6rem;
+}
