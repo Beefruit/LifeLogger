@@ -3,10 +3,11 @@
 import { type FC } from "react";
 import classNames from "classnames/bind";
 import styles from "./Additional.module.css";
-import { Film, Star, Share } from "lucide-react";
+import { Star } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useAdditional } from "@/containers/additional/hook/useAdditional";
-import { CategoryType } from "@/containers/additional/hook/useAdditional";
+import { TCategory } from "@/types";
+import AdditionalImgContainer from "../additionalImg/AdditionalImg.container";
 
 const Select = dynamic(() => import("@/component/select/Select.component"), {
   ssr: false,
@@ -14,14 +15,18 @@ const Select = dynamic(() => import("@/component/select/Select.component"), {
 
 const cx = classNames.bind(styles);
 
-const AdditionalContainer: FC = () => {
+interface IAdditionalContainerProps {
+  type: TCategory;
+}
+
+const AdditionalContainer: FC<IAdditionalContainerProps> = ({ type }) => {
   const {
     selectedCategory,
     setSelectedCategory,
     categoryConfig,
     rating,
     OnClickRatingChange,
-  } = useAdditional();
+  } = useAdditional({ type });
 
   return (
     <div className={cx("additional")}>
@@ -59,7 +64,7 @@ const AdditionalContainer: FC = () => {
                 ]}
                 value={selectedCategory}
                 onChange={(option) =>
-                  setSelectedCategory(option?.value as CategoryType)
+                  setSelectedCategory(option?.value as TCategory)
                 }
                 icon={categoryConfig[selectedCategory].icon(cx("form-icon"))}
                 optionBackgroundColor={categoryConfig[selectedCategory].color}
@@ -108,24 +113,7 @@ const AdditionalContainer: FC = () => {
               rows={4}
             ></textarea>
           </div>
-          <div className={cx("form-group")}>
-            <label className={cx("form-label")}>이미지</label>
-            <div className={cx("form-container")}>
-              <Share size={48} className={cx("upload-icon")} />
-              <h3 className={cx("form-description")}>
-                이미지를 드래그하여 놓거나 클릭하여 선택하세요.
-              </h3>
-              <label htmlFor="fileUpload" className={cx("file-upload")}>
-                파일 선택
-              </label>
-              <input
-                type="file"
-                id="fileUpload"
-                accept="image/*"
-                className={cx("form-file")}
-              />
-            </div>
-          </div>
+          <AdditionalImgContainer />
           <button
             type="submit"
             className={cx("form-button")}

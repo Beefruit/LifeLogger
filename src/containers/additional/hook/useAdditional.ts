@@ -3,8 +3,7 @@
 import { ReactElement, useState } from "react";
 import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 import { createElement } from "react";
-
-export type CategoryType = "movie" | "music" | "restaurant" | "book";
+import { TCategory } from "@/types";
 
 interface CategoryConfig {
   title: string;
@@ -15,9 +14,12 @@ interface CategoryConfig {
   color: string;
 }
 
-export const useAdditional = () => {
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryType>("movie");
+interface IUseAdditionalProps {
+  type: TCategory;
+}
+
+export const useAdditional = ({ type }: IUseAdditionalProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<TCategory>(type);
 
   const [rating, setRating] = useState(3);
 
@@ -25,7 +27,7 @@ export const useAdditional = () => {
     setRating(star);
   };
 
-  const categoryConfig: Record<CategoryType, CategoryConfig> = {
+  const categoryConfig: Record<TCategory, CategoryConfig> = {
     movie: {
       title: "새로운 영화 추가",
       placeholder: "영화 제목을 입력하세요",
