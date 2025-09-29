@@ -14,7 +14,13 @@ import { Pagination } from "swiper/modules";
 
 import "./RecordImgSlide.css";
 
-const RecordImgSlideContainer: FC = () => {
+interface IRecordImgSlideContainerProps {
+  images?: string[];
+}
+
+const RecordImgSlideContainer: FC<IRecordImgSlideContainerProps> = ({
+  images,
+}) => {
   return (
     <Swiper
       pagination={{
@@ -24,61 +30,19 @@ const RecordImgSlideContainer: FC = () => {
       modules={[Pagination, Navigation]}
       className="record-swiper"
     >
-      <SwiperSlide>
-        <div className="record-img-slide">
-          <Image
-            src={"/img/placeholder.png"}
-            alt="placeholder"
-            width={832}
-            height={468}
-            className="placeholder-image"
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="record-img-slide">
-          <Image
-            src={"/img/placeholder.png"}
-            alt="placeholder"
-            width={832}
-            height={468}
-            className="placeholder-image"
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="record-img-slide">
-          <Image
-            src={"/img/placeholder.png"}
-            alt="placeholder"
-            width={832}
-            height={468}
-            className="placeholder-image"
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="record-img-slide">
-          <Image
-            src={"/img/placeholder.png"}
-            alt="placeholder"
-            width={832}
-            height={468}
-            className="placeholder-image"
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="record-img-slide">
-          <Image
-            src={"/img/placeholder.png"}
-            alt="placeholder"
-            width={832}
-            height={468}
-            className="placeholder-image"
-          />
-        </div>
-      </SwiperSlide>
+      {images?.map((image, index) => (
+        <SwiperSlide key={index}>
+          <div className="record-img-slide">
+            <Image
+              src={image || "/img/placeholder.png"}
+              alt="placeholder"
+              width={832}
+              height={468}
+              className="placeholder-image"
+            />
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

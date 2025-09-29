@@ -1,35 +1,13 @@
-.log {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.search-main {
   margin-bottom: 2rem;
-}
-
-.log-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 0;
-}
-
-.log-header__title {
-  font-size: 2.4rem;
-  font-weight: 700;
-}
-
-.log-button {
-  font-size: 1.4rem;
-  padding: 1rem;
-  border: 1px solid #e2e8f0;
-  background-color: #fff;
-  border-radius: 1rem;
-  cursor: pointer;
 }
 
 .log-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(38.9rem, 1fr));
+  padding: 2rem;
   gap: 2rem;
+  justify-content: center;
   align-items: center;
 }
 
@@ -41,19 +19,12 @@
 
 .log-img {
   position: relative;
-  height: 21rem;
-}
-
-.log-img img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
 .log-film-icon,
 .log-music-icon,
-.log-restaurant-icon,
-.log-book-icon {
+.log-restaurant-icon {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -78,10 +49,6 @@
 
 .log-restaurant-icon {
   background-color: #10b981;
-}
-
-.log-book-icon {
-  background-color: #3b82f6;
 }
 
 .log-title {
@@ -122,14 +89,8 @@
   color: #475569;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .log-list {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .log-list {
-    grid-template-columns: 1fr;
   }
 }

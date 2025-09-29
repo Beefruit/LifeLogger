@@ -12,7 +12,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { type TCategory } from "@/types";
-import { formatCategoryToKorean } from "./domain";
+import { formatCategoryToKorean } from "@/utils/formatStr";
 import { match } from "ts-pattern";
 
 const cx = classNames.bind(styles);
@@ -24,6 +24,7 @@ interface IRecentLogContainerProps {
     category: TCategory;
     rating: number;
     created_at: string;
+    images?: string[];
   }>;
 }
 
@@ -42,46 +43,50 @@ const RecentLogContainer: FC<IRecentLogContainerProps> = ({ records }) => {
         {records.map((record) => (
           <li key={record.id} className={cx("log-item")}>
             <div className={cx("log-container")}>
-              <div className={cx("log-img")}>
-                <Image
-                  src={"/img/placeholder.png"}
-                  alt="placeholder"
-                  width={389.3}
-                  height={219}
-                  className={cx("log-image")}
-                />
-                <div
-                  className={cx({
-                    "log-film-icon": record.category === "movie",
-                    "log-music-icon": record.category === "music",
-                    "log-restaurant-icon": record.category === "restaurant",
-                    "log-book-icon": record.category === "book",
-                  })}
-                >
-                  {match(record.category)
-                    .with("movie", () => <Film size={12} />)
-                    .with("music", () => <Music size={12} />)
-                    .with("restaurant", () => <UtensilsCrossed size={12} />)
-                    .with("book", () => <BookOpen size={12} />)
-                    .exhaustive()}
-                  <span>{formatCategoryToKorean(record.category)}</span>
-                </div>
-              </div>
-              <div className={cx("log-content")}>
-                <h3 className={cx("log-title")}>{record.title}</h3>
-                <div className={cx("log-description")}>
-                  <div className={cx("log-icon")}>
-                    <Star size={16} className={cx("log-star")} />
-                    <span className={cx("log-rating")}>{record.rating}/5</span>
-                  </div>
-                  <div className={cx("log-info")}>
-                    <Calendar size={16} className={cx("log-calendar")} />
-                    <span className={cx("log-date")}>
-                      {new Date(record.created_at).toLocaleDateString()}
-                    </span>
+              <Link href={`/record/${record.id}`} className={cx("log-link")}>
+                <div className={cx("log-img")}>
+                  <Image
+                    src={record.images?.[0] || "/img/placeholder.png"}
+                    alt="placeholder"
+                    width={389.3}
+                    height={219}
+                    className={cx("log-image")}
+                  />
+                  <div
+                    className={cx({
+                      "log-film-icon": record.category === "movie",
+                      "log-music-icon": record.category === "music",
+                      "log-restaurant-icon": record.category === "restaurant",
+                      "log-book-icon": record.category === "book",
+                    })}
+                  >
+                    {match(record.category)
+                      .with("movie", () => <Film size={12} />)
+                      .with("music", () => <Music size={12} />)
+                      .with("restaurant", () => <UtensilsCrossed size={12} />)
+                      .with("book", () => <BookOpen size={12} />)
+                      .exhaustive()}
+                    <span>{formatCategoryToKorean(record.category)}</span>
                   </div>
                 </div>
-              </div>
+                <div className={cx("log-content")}>
+                  <h3 className={cx("log-title")}>{record.title}</h3>
+                  <div className={cx("log-description")}>
+                    <div className={cx("log-icon")}>
+                      <Star size={16} className={cx("log-star")} />
+                      <span className={cx("log-rating")}>
+                        {record.rating}/5
+                      </span>
+                    </div>
+                    <div className={cx("log-info")}>
+                      <Calendar size={16} className={cx("log-calendar")} />
+                      <span className={cx("log-date")}>
+                        {new Date(record.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </div>
           </li>
         ))}

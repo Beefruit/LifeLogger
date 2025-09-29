@@ -1,9 +1,11 @@
 "use client";
 
-import { ReactElement, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 import { createElement } from "react";
 import { TCategory } from "@/types";
+import useAdditionalImg from "./useAdditionalImg";
+import { postAdditional } from "../api/additional.api";
 
 interface CategoryConfig {
   title: string;
@@ -18,15 +20,32 @@ interface IUseAdditionalProps {
   type: TCategory;
 }
 
-export const useAdditional = ({ type }: IUseAdditionalProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<TCategory>(type);
+interface IUseAdditionalReturn {
+  selectedCategory: TCategory;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<TCategory>>;
+  categoryConfig: Record<TCategory, CategoryConfig>;
+  rating: number;
+  title: string;
+  experience: string;
+  description: string;
+  previewImages: string[] | null;
+  isDragOver: boolean;
+  onChangeAdditionalImg: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClickDeleteImg: (index: number) => void;
+  onDropImg: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+  onClickRatingChange: (star: number) => void;
+  onSubmitAdditional: (e: React.FormEvent<HTMLFormElement>) => void;
+  onChangeTitle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeExperience: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeDescription: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
-  const [rating, setRating] = useState(3);
-
-  const OnClickRatingChange = (star: number) => {
-    setRating(star);
-  };
-
+export const useAdditional = ({
+  type,
+}: IUseAdditionalProps): IUseAdditionalReturn => {
   const categoryConfig: Record<TCategory, CategoryConfig> = {
     movie: {
       title: "새로운 영화 추가",
@@ -63,12 +82,75 @@ export const useAdditional = ({ type }: IUseAdditionalProps) => {
       color: "#1190F2",
     },
   };
+  const [selectedCategory, setSelectedCategory] = useState<TCategory>(type);
+  const [rating, setRating] = useState(3);
+  const [title, setTitle] = useState("");
+  const [experience, setExperience] = useState("");
+  const [description, setDescription] = useState("");
+
+  const {
+    additionalImgs,
+    previewImages,
+    isDragOver,
+    onChangeAdditionalImg,
+    onClickDeleteImg,
+    onDropImg,
+    onDragOver,
+    onDragEnter,
+    onDragLeave,
+  } = useAdditionalImg();
+
+  const onClickRatingChange = (star: number) => {
+    setRating(star);
+  };
+
+  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const onChangeExperience = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExperience(e.target.value);
+  };
+
+  const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
+
+  const onSubmitAdditional = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = {
+      category: selectedCategory,
+      rating,
+      title,
+      experience,
+      description,
+      images: additionalImgs,
+    };
+
+    await postAdditional(formData);
+  };
 
   return {
     selectedCategory,
     setSelectedCategory,
     categoryConfig,
     rating,
-    OnClickRatingChange,
+    title,
+    experience,
+    description,
+    onClickRatingChange,
+    onSubmitAdditional,
+    onChangeTitle,
+    onChangeExperience,
+    onChangeDescription,
+    previewImages,
+    isDragOver,
+    onChangeAdditionalImg,
+    onClickDeleteImg,
+    onDropImg,
+    onDragOver,
+    onDragEnter,
+    onDragLeave,
   };
 };

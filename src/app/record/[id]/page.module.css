@@ -49,8 +49,23 @@
   padding: 1rem;
   background-color: #f43f5e;
   border-radius: 2rem;
-  width: 7.3rem;
   height: 2.8rem;
+}
+
+.record-header-category.book {
+  background-color: #3b82f6;
+}
+
+.record-header-category.music {
+  background-color: #8b5cf6;
+}
+
+.record-header-category.restaurant {
+  background-color: #10b981;
+}
+
+.record-header-category.movie {
+  background-color: #f43f5e;
 }
 
 .record-icon {

@@ -22,8 +22,6 @@ export const useHeader = (): IUseHeaderReturn => {
     (async () => {
       const userProfileData = await getUserProfile();
 
-      console.log("User Profile Data:", userProfileData.avatar_url);
-
       if (userProfileData) {
         setUserProfile({
           avatar_url: userProfileData.avatar_url,

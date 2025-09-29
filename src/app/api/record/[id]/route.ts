@@ -1,13 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 
-export const GET = async () => {
+export const GET = async (
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  const id = (await params).id;
   const supabase = await createClient();
 
-  const { data: records, error } = await supabase
+  const { data: record, error } = await supabase
     .from("records")
     .select("*")
-    .order("created_at", { ascending: false });
+    .eq("id", id)
+    .single();
 
   if (error) {
     return NextResponse.json(
@@ -19,6 +24,7 @@ export const GET = async () => {
   const { data: images, error: imageError } = await supabase
     .from("record_images")
     .select("*")
+    .eq("record_id", id)
     .order("created_at", { ascending: false });
 
   if (imageError) {
@@ -28,12 +34,10 @@ export const GET = async () => {
     );
   }
 
-  const recordsWithImages = records.map((record) => {
-    const recordImages = images
-      .filter((image) => image.record_id === record.id)
-      .map((image) => image.image_url);
-    return { ...record, images: recordImages };
-  });
+  const recordWithImages = {
+    ...record,
+    images: images.map((img) => img.image_url),
+  };
 
-  return NextResponse.json(recordsWithImages, { status: 200 });
+  return NextResponse.json({ record: recordWithImages }, { status: 200 });
 };

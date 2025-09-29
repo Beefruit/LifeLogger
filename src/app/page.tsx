@@ -46,7 +46,7 @@ const HomePage: FC = async () => {
         <RecordStatsContainer records={records} />
         <div className={cx("additional-container")}>
           <div className={cx("additional-content")}>
-            <Link href="/add-movie">
+            <Link href="/additional?type=movie">
               <div className={cx("film-content")}>
                 <div className={cx("film-icon")}>
                   <Film size={24} />
@@ -59,7 +59,7 @@ const HomePage: FC = async () => {
             </Link>
           </div>
           <div className={cx("additional-content")}>
-            <Link href="/add-music">
+            <Link href="/additional?type=music">
               <div className={cx("music-content")}>
                 <div className={cx("music-icon")}>
                   <Music size={24} />
@@ -72,7 +72,7 @@ const HomePage: FC = async () => {
             </Link>
           </div>
           <div className={cx("additional-content")}>
-            <Link href="/add-restaurant">
+            <Link href="/additional?type=restaurant">
               <div className={cx("restaurant-content")}>
                 <div className={cx("restaurant-icon")}>
                   <UtensilsCrossed size={24} />
@@ -85,7 +85,7 @@ const HomePage: FC = async () => {
             </Link>
           </div>
           <div className={cx("additional-content")}>
-            <Link href="/add-book">
+            <Link href="/additional?type=book">
               <div className={cx("book-content")}>
                 <div className={cx("book-icon")}>
                   <BookOpen size={24} />

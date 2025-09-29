@@ -1,7 +1,6 @@
 import { type FC } from "react";
 import HeaderContainer from "@/containers/header/Header.container";
 import AdditionalContainer from "@/containers/additional/Additional.container";
-import { promises } from "dns";
 import { TCategory } from "@/types";
 import { notFound, redirect } from "next/navigation";
 

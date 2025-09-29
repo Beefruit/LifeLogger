@@ -2,28 +2,88 @@ import { type FC } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
 import HeaderContainer from "@/containers/header/Header.container";
+import RecordImgSlideContainer from "@/containers/recordImgSlide/RecordImgSlide.container";
 import {
   Film,
   Music,
   UtensilsCrossed,
+  BookOpen,
   Star,
   Calendar,
   SquarePen,
   Trash2,
 } from "lucide-react";
-import RecordImgSlideContainer from "@/containers/recordImgSlide/RecordImgSlide.container";
+import { match } from "ts-pattern";
+import { type TCategory } from "@/types";
+import { formatCategoryToKorean } from "@/utils/formatStr";
+import { format } from "date-fns";
+
+interface IRecordPageProps {
+  params: {
+    id: string;
+  };
+}
+
+interface IRecord {
+  id: string;
+  title: string;
+  category: TCategory;
+  rating: number;
+  created_at: string;
+  description: string;
+  images?: string[];
+}
 
 const cx = classNames.bind(styles);
 
-const RecordPage: FC = () => {
+const RecordPage: FC<IRecordPageProps> = async ({ params }) => {
+  const id = (await params).id;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/record/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch record");
+  }
+
+  const { record }: { record: IRecord } = await res.json();
+
   return (
     <>
       <HeaderContainer />
       <div className={cx("main")}>
         <div className={cx("record-header-icon")}>
-          <div className={cx("record-header-category")}>
-            <Film size={12} className={cx("record-icon")} />
-            <span className={cx("record-category")}>영화</span>
+          <div
+            className={cx("record-header-category", {
+              movie: record.category === "movie",
+              music: record.category === "music",
+              restaurant: record.category === "restaurant",
+              book: record.category === "book",
+            })}
+          >
+            {match(record.category)
+              .with("movie", () => (
+                <Film size={12} className={cx("record-icon")} />
+              ))
+              .with("music", () => (
+                <Music size={12} className={cx("record-icon")} />
+              ))
+              .with("restaurant", () => (
+                <UtensilsCrossed size={12} className={cx("record-icon")} />
+              ))
+              .with("book", () => (
+                <BookOpen size={12} className={cx("record-icon")} />
+              ))
+              .exhaustive()}
+            <span className={cx("record-category")}>
+              {formatCategoryToKorean(record.category)}
+            </span>
           </div>
           <div className={cx("record-header-util")}>
             <div className={cx("record-header-edit")}>
@@ -37,33 +97,26 @@ const RecordPage: FC = () => {
           </div>
         </div>
         <div className={cx("record-header-text")}>
-          <h2 className={cx("header-title")}>오펜하이머</h2>
+          <h2 className={cx("header-title")}>{record.title}</h2>
           <div className={cx("header-description")}>
             <div className={cx("header-rating")}>
               <Star size={16} className={cx("header-star")} />
-              <span className={cx("header-rating-value")}>5/5</span>
+              <span className={cx("header-rating-value")}>
+                {record.rating}/5
+              </span>
             </div>
             <div className={cx("header-date")}>
               <Calendar size={16} className={cx("header-calendar")} />
-              <span className={cx("header-date-value")}>2024.01.15</span>
+              <span className={cx("header-date-value")}>
+                {format(new Date(record.created_at), "yyyy.MM.dd")}
+              </span>
             </div>
           </div>
         </div>
-        <RecordImgSlideContainer />
+        <RecordImgSlideContainer images={record.images} />
         <div className={cx("record-content")}>
           <p className={cx("record-title")}>나의 경험</p>
-          <p className={cx("record-description")}>
-            크리스토퍼 놀란의 J. 로버트 오펜하이머에 관한 전기 스릴러는 과학적
-            발견의 복잡한 도덕적 함의를 탐구하는 영화 제작의 걸작입니다. 이
-            영화는 맨해튼 프로젝트를 이끌고 나중에 원자폭탄 제조의 결 과와
-            씨름한 남자의 이야기를 말하기 위해 여러 타임라인을 능숙하게
-            엮어냅니다. 킬리언 머피는 오 펜하이머로서 그의 재능과 고뇌를 모두
-            포착하며 경력을 정의하는 연기를 선보입니다. 촬영은 숨막히 고 사운드
-            디자인은 당신을 역사의 한복판에 놓는 몰입감 있는 경험을
-            만들어냅니다. 이것은 최고의 영화 제작입니다 - 20세기의 가장 중요한
-            인물 중 한 명에 대한 생각을 자극하고 시각적으로 놀라우며 감정적으로
-            강력한 탐구입니다.
-          </p>
+          <p className={cx("record-description")}>{record.description}</p>
         </div>
       </div>
     </>

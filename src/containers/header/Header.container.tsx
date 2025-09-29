@@ -13,14 +13,14 @@ const cx = classNames.bind(styles);
 const HeaderContainer: FC = () => {
   const { isLogin, userProfile } = useHeader();
 
-  console.log("HeaderContainer - userProfile:", userProfile?.avatar_url);
-
   return (
     <div className={cx("header")}>
-      <div className={cx("logo")}>
-        <Image src={"/img/logo.png"} alt="logo" width={32} height={32} />
-        <h2 className="header-title">라이프로거</h2>
-      </div>
+      <Link href="/" className={cx("home-link")}>
+        <div className={cx("logo")}>
+          <Image src={"/img/logo.png"} alt="logo" width={32} height={32} />
+          <h2 className="header-title">라이프로거</h2>
+        </div>
+      </Link>
       <div className={cx("nav")}>
         <ul className={cx("nav-list")}>
           <li className={cx("nav-item")}>
