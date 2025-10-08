@@ -11,7 +11,13 @@ import { useHeader } from "./hook/useHeader";
 const cx = classNames.bind(styles);
 
 const HeaderContainer: FC = () => {
-  const { isLogin, userProfile } = useHeader();
+  const {
+    isLogin,
+    userProfile,
+    isMobileSize,
+    isMobileMenuOpen,
+    onClickMobileMenu,
+  } = useHeader();
 
   return (
     <div className={cx("header")}>
@@ -21,45 +27,59 @@ const HeaderContainer: FC = () => {
           <h2 className="header-title">라이프로거</h2>
         </div>
       </Link>
-      <div className={cx("nav")}>
-        <ul className={cx("nav-list")}>
-          <li className={cx("nav-item")}>
-            <Link href="/search">검색</Link>
-          </li>
-          {!isLogin ? (
-            <>
-              <li className={cx("nav-item")}>
-                <Link href="/login">로그인</Link>
-              </li>
-              <li className={cx("nav-item")}>
-                <Link href="/signup">회원가입</Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className={cx("nav-item")}>
-                <Link href="/profile">프로필</Link>
-              </li>
-              <li className={cx("nav-item")}>
-                <Link href="/logout">로그아웃</Link>
-              </li>
-              <li className={cx("nav-item", "nav-profile")}>
-                <p className={cx("nav-item-value")}>
-                  {userProfile?.name || "게스트"}
-                </p>
-                <Image
-                  src={
-                    userProfile?.avatar_url || "/img/profile-placeholder.jpg"
-                  }
-                  alt="프로필 이미지"
-                  width={32}
-                  height={32}
-                />
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+      {isMobileSize && (
+        <button
+          type="button"
+          className={cx("mobile-menu-button", { open: isMobileMenuOpen })}
+          onClick={onClickMobileMenu}
+        >
+          <span className={cx("menu-icon")} />
+          <span className={cx("menu-icon")} />
+          <span className={cx("menu-icon")} />
+          <span className={cx("menu-icon")} />
+        </button>
+      )}
+      {(!isMobileSize || (isMobileMenuOpen && isMobileSize)) && (
+        <div className={cx("nav", { open: isMobileMenuOpen && isMobileSize })}>
+          <ul className={cx("nav-list")}>
+            <li className={cx("nav-item")}>
+              <Link href="/search">검색</Link>
+            </li>
+            {!isLogin ? (
+              <>
+                <li className={cx("nav-item")}>
+                  <Link href="/login">로그인</Link>
+                </li>
+                <li className={cx("nav-item")}>
+                  <Link href="/signup">회원가입</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className={cx("nav-item")}>
+                  <Link href="/profile">프로필</Link>
+                </li>
+                <li className={cx("nav-item")}>
+                  <Link href="/logout">로그아웃</Link>
+                </li>
+                <li className={cx("nav-item", "nav-profile")}>
+                  <p className={cx("nav-item-value")}>
+                    {userProfile?.name || "게스트"}
+                  </p>
+                  <Image
+                    src={
+                      userProfile?.avatar_url || "/img/profile-placeholder.jpg"
+                    }
+                    alt="프로필 이미지"
+                    width={32}
+                    height={32}
+                  />
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

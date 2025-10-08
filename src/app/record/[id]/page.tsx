@@ -86,14 +86,14 @@ const RecordPage: FC<IRecordPageProps> = async ({ params }) => {
             </span>
           </div>
           <div className={cx("record-header-util")}>
-            <div className={cx("record-header-edit")}>
+            {/* <div className={cx("record-header-edit")}>
               <SquarePen size={16} className={cx("record-edit-icon")} />
               <span className={cx("record-edit-text")}>편집</span>
             </div>
             <div className={cx("record-header-delete")}>
               <Trash2 size={16} className={cx("record-delete-icon")} />
               <span className={cx("record-delete-text")}>삭제</span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={cx("record-header-text")}>

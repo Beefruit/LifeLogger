@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./SearchBar.module.css";
 import dynamic from "next/dynamic";
 import { Search, Funnel, Star, Calendar } from "lucide-react";
+import useSearchBar from "./hook/useSearchBar";
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,13 @@ const Select = dynamic(() => import("@/component/select/Select.component"), {
 });
 
 const SearchBarContainer: FC = () => {
+  const {
+    searchState,
+    onChangeSearchInput,
+    onChangeCategory,
+    onChangeRating,
+    onChangeCreatedAt,
+  } = useSearchBar();
   return (
     <div className={cx("log-search")}>
       <form className={cx("search-form")}>
@@ -22,6 +30,8 @@ const SearchBarContainer: FC = () => {
             type="text"
             className={cx("search-input")}
             placeholder="제목, 설명 또는 키워드로 검색하세요."
+            value={searchState.searchInput}
+            onChange={onChangeSearchInput}
           />
         </fieldset>
         <div className={cx("filter-container")}>
@@ -36,9 +46,9 @@ const SearchBarContainer: FC = () => {
                   { value: "restaurant", label: "식당" },
                   { value: "book", label: "독서" },
                 ]}
-                value="all"
+                value={searchState.category}
+                onChange={onChangeCategory}
                 icon={<Funnel size={16} />}
-                width="37.8rem"
                 styles={{
                   control: (provided) => ({
                     ...provided,
@@ -74,9 +84,9 @@ const SearchBarContainer: FC = () => {
                   { value: "2", label: "2점 이상" },
                   { value: "1", label: "1점 이상" },
                 ]}
-                value="all"
+                value={searchState.rating}
+                onChange={onChangeRating}
                 icon={<Star size={16} />}
-                width="37.8rem"
                 styles={{
                   control: (provided) => ({
                     ...provided,
@@ -110,9 +120,9 @@ const SearchBarContainer: FC = () => {
                   { value: "date1", label: "지난 주" },
                   { value: "date2", label: "지난 달" },
                 ]}
-                value="all"
+                value={searchState.createdAt}
+                onChange={onChangeCreatedAt}
                 icon={<Calendar size={16} />}
-                width="37.8rem"
                 styles={{
                   control: (provided) => ({
                     ...provided,

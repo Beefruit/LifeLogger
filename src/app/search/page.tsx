@@ -20,9 +20,6 @@ const SearchPage: FC = () => {
           </p>
         </div>
         <SearchBarContainer />
-        <div className={cx("search-description")}>
-          <p>6개의 기록을 표시하고 있습니다.</p>
-        </div>
         <SearchLogContainer />
       </div>
     </>

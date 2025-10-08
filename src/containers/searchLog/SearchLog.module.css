@@ -19,12 +19,17 @@
 
 .log-img {
   position: relative;
+}
+
+.log-image {
   object-fit: cover;
+  width: 100%;
 }
 
 .log-film-icon,
 .log-music-icon,
-.log-restaurant-icon {
+.log-restaurant-icon,
+.log-book-icon {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -49,6 +54,10 @@
 
 .log-restaurant-icon {
   background-color: #10b981;
+}
+
+.log-book-icon {
+  background-color: #3b82f6;
 }
 
 .log-title {
@@ -92,5 +101,12 @@
 @media (max-width: 1280px) {
   .log-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .log-list {
+    grid-template-columns: 1fr;
+    padding: 2rem 0;
   }
 }

@@ -7,20 +7,20 @@ import Select, {
   ControlProps,
   GroupBase,
 } from "react-select";
-import { CategoryType } from "@/containers/additional/hook/useAdditional";
+import { TCategory } from "@/types";
 
 interface IOption {
-  value: CategoryType | string;
+  value: TCategory | string;
   label: string;
 }
 
 interface ISelectComponentProps {
   width?: string;
   height?: string;
-  value?: CategoryType | string;
+  value?: TCategory | string;
   options: IOption[];
   optionBackgroundColor?: string;
-  onChange?: (value: IOption | null) => void;
+  onChange: (value: IOption) => void;
   icon?: React.ReactNode;
   styles?: StylesConfig<IOption, false>;
 }
@@ -105,7 +105,11 @@ const SelectComponent: FC<ISelectComponentProps> = ({
         options={options}
         value={selectedOption}
         styles={customStyles}
-        onChange={onChange}
+        onChange={(newValue) => {
+          if (newValue) {
+            onChange(newValue);
+          }
+        }}
         components={{ Control: CustomControl(icon) }}
       />
     </div>
