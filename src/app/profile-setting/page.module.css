@@ -28,3 +28,9 @@
   font-size: 1.6rem;
   color: #475569;
 }
+
+@media (max-width: 500px) {
+  .signup-page {
+    padding: 2rem;
+  }
+}

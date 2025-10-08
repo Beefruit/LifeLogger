@@ -11,12 +11,14 @@ const cx = classNames.bind(styles);
 const ProfileSettingContainer: FC = () => {
   const {
     LIMIT_INTRODUCTION_LENGTH,
-    profileImage,
+    LIMIT_NICKNAME_LENGTH,
+    nickname,
     introduction,
     previewImage,
     onChangeText,
     onChangeProfileImage,
     onSubmitProfileSetting,
+    onChangeNickname,
   } = useProfileSetting();
 
   return (
@@ -63,6 +65,19 @@ const ProfileSettingContainer: FC = () => {
             onChange={onChangeProfileImage}
           />
         </div>
+      </div>
+      <div className={cx("form-group")}>
+        <label className={cx("form-label")}>닉네임</label>
+        <input
+          type="text"
+          className={cx("form-input")}
+          placeholder="닉네임을 입력하세요"
+          onChange={onChangeNickname}
+          value={nickname}
+        />
+        <p className={cx("form-text-limit")}>
+          {nickname.length} / {LIMIT_NICKNAME_LENGTH}자
+        </p>
       </div>
       <div className={cx("form-group")}>
         <label className={cx("form-label")}>자기 소개</label>

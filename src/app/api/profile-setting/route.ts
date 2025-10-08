@@ -7,6 +7,7 @@ export const POST = async (request: NextRequest) => {
 
   const file = formData.get("profileImage") as File | null;
   const introduction = formData.get("introduction") as string;
+  const nickname = formData.get("nickname") as string;
 
   // 1. 사용자 정보 가져오기
   const {
@@ -49,6 +50,7 @@ export const POST = async (request: NextRequest) => {
   // 3. DB 저장
   const { error: dbError } = await supabase.from("profiles").upsert({
     id: user.id,
+    name: nickname,
     bio: introduction,
     avatar_url: profileImageUrl,
   });
