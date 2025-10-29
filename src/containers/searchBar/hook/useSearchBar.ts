@@ -1,7 +1,6 @@
 "use client";
 
 import useSearchStore from "@/store/search.store";
-import { useEffect, useState } from "react";
 import { TCategory } from "@/types";
 
 interface IUseSearchBarReturn {

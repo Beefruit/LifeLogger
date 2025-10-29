@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   const id = (await params).id;
   const supabase = await createClient();

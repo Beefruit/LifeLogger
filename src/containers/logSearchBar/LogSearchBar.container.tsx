@@ -3,14 +3,14 @@
 import { type FC } from "react";
 import classNames from "classnames/bind";
 import styles from "./LogSearchBar.module.css";
-import dynamic from "next/dynamic";
-import { Search, Funnel } from "lucide-react";
+// import dynamic from "next/dynamic";
+import { Search } from "lucide-react";
 
 const cx = classNames.bind(styles);
 
-const Select = dynamic(() => import("@/component/select/Select.component"), {
-  ssr: false,
-});
+// const Select = dynamic(() => import("@/component/select/Select.component"), {
+//   ssr: false,
+// });
 
 const LogSearchBarContainer: FC = () => {
   return (
@@ -24,7 +24,7 @@ const LogSearchBarContainer: FC = () => {
             placeholder="기록을 검색하세요."
           />
         </fieldset>
-        <div className={cx("filter-select-container")}>
+        {/* <div className={cx("filter-select-container")}>
           <Select
             options={[
               { value: "all", label: "모든 유형" },
@@ -51,6 +51,7 @@ const LogSearchBarContainer: FC = () => {
                   ? "#E2E8F0"
                   : provided.backgroundColor,
               }),
+              onChange: () => {},
             }}
           />
         </div>
@@ -79,7 +80,7 @@ const LogSearchBarContainer: FC = () => {
               }),
             }}
           />
-        </div>
+        </div> */}
       </form>
     </div>
   );

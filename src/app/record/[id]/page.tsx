@@ -10,8 +10,6 @@ import {
   BookOpen,
   Star,
   Calendar,
-  SquarePen,
-  Trash2,
 } from "lucide-react";
 import { match } from "ts-pattern";
 import { type TCategory } from "@/types";
@@ -19,9 +17,9 @@ import { formatCategoryToKorean } from "@/utils/formatStr";
 import { format } from "date-fns";
 
 interface IRecordPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 interface IRecord {

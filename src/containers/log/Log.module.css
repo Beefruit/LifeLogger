@@ -1,0 +1,96 @@
+.lifelog-main {
+  margin-bottom: 2rem;
+}
+
+.log-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(38.9rem, 1fr));
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-item {
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 38.9rem;
+}
+
+.log-img {
+  position: relative;
+  object-fit: cover;
+}
+
+.log-film-icon,
+.log-music-icon,
+.log-restaurant-icon,
+.log-book-icon {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.log-film-icon {
+  background-color: #f43f5e;
+}
+
+.log-music-icon {
+  background-color: #8b5cf6;
+}
+
+.log-restaurant-icon {
+  background-color: #10b981;
+}
+
+.log-book-icon {
+  background-color: #3b82f6;
+}
+
+.log-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.log-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.log-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-star {
+  color: #facc15;
+  fill: currentColor;
+}
+
+.log-rating {
+  font-size: 1.4rem;
+}
+
+.log-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-calendar {
+  color: #475569;
+}

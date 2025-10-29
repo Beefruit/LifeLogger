@@ -77,7 +77,7 @@ const useAdditionalImg = (): IUseAdditionalImgReturn => {
     setAdditionalImgs((prev) => (prev ? [...prev, file] : [file]));
   };
 
-  const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+  const onDragEnter = () => {
     setIsDragOver(true);
   };
 

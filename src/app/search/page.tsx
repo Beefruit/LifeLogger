@@ -1,7 +1,6 @@
 import { type FC } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
-import Image from "next/image";
 import HeaderContainer from "@/containers/header/Header.container";
 import SearchBarContainer from "@/containers/searchBar/SearchBar.container";
 import SearchLogContainer from "@/containers/searchLog/SearchLog.container";

@@ -6,17 +6,8 @@ import ProfileContainer from "@/containers/profile/Profile.container";
 import ProfileRecordStatsContainer from "@/containers/profileRecordStats/ProfileRecordStats.container";
 import ProfileMonthlyContainer from "@/containers/profileMonthly/ProfileMonthly.container";
 import ProfileRecentContainer from "@/containers/profileRecent/ProfileRecent.container";
-import { type TCategory } from "@/types";
 import { createClient } from "@/utils/supabase/server";
-import {
-  Film,
-  Music,
-  UtensilsCrossed,
-  BookOpen,
-  Star,
-  FileText,
-  Download,
-} from "lucide-react";
+import { Film, Music, UtensilsCrossed, BookOpen } from "lucide-react";
 
 const cx = classNames.bind(styles);
 

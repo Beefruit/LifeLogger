@@ -35,10 +35,9 @@ export const useSignup = () => {
 
       router.push("/login");
       alert("회원가입이 완료되었습니다.");
-    } catch (error) {
+    } catch {
       alert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
-    console.log("회원가입 정보:", { name, email, password, confirmPassword });
   };
   return {
     name,
