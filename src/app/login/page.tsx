@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 const LoginPage: FC = () => {
   return (
-    <div>
+    <div className={cx("main")}>
       <div className={cx("login-header")}>
         <Image src={"/img/logo.png"} alt="logo" width={40} height={40} />
         <h2 className={cx("header-title")}>라이프로거</h2>

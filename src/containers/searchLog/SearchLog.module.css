@@ -2,6 +2,15 @@
   margin-bottom: 2rem;
 }
 
+.no-results {
+  font-size: 1.8rem;
+  color: #64748b;
+  margin: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .log-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(38.9rem, 1fr));

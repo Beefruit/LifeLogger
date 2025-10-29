@@ -11,6 +11,11 @@ body {
   font-size: 10px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Pretendard";
@@ -31,6 +36,7 @@ li {
   padding: 0 4rem;
   width: 128rem;
   margin: 8rem auto 0 auto;
+  flex: 1;
 }
 
 @media (max-width: 1280px) {

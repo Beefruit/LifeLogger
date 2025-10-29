@@ -26,5 +26,24 @@ export const GET = async () => {
     );
   }
 
-  return NextResponse.json(records, { status: 200 });
+  const { data: images, error: imageError } = await supabase
+    .from("record_images")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (imageError) {
+    return NextResponse.json(
+      { error: "이미지를 가져오는 데 실패했습니다." },
+      { status: 400 }
+    );
+  }
+
+  const recordsWithImages = records.map((record) => {
+    const recordImages = images
+      .filter((image) => image.record_id === record.id)
+      .map((image) => image.image_url);
+    return { ...record, images: recordImages };
+  });
+
+  return NextResponse.json(recordsWithImages, { status: 200 });
 };
