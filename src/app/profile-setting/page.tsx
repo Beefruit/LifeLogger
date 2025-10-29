@@ -1,8 +1,9 @@
-import { type FC } from "react";
+import { type FC, Suspense } from "react";
 import styles from "./page.module.css";
 import classNames from "classnames/bind";
 import Image from "next/image";
 import ProfileSettingContainer from "@/containers/profileSetting/ProfileSetting.container";
+import { LoadingSpinner } from "@/component";
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,9 @@ const ProfileSettingPage: FC = () => {
           계정을 만들어 특별한 순간들을 기록해보세요.
         </p>
       </div>
-      <ProfileSettingContainer />
+      <Suspense fallback={<LoadingSpinner />}>
+        <ProfileSettingContainer />
+      </Suspense>
     </div>
   );
 };
